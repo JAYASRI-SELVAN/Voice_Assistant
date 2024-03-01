@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Assistant</title>
+    <style>
+        body {
+            background-color: yellow;
+            font-size: 28px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #recordingStatus {
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Voice Assistant</h1>
+
+    <form action="{{ url_for('process_query') }}" method="post" id="voiceForm">
+        <label for="user_query">Enter your query:</label>
+        <input type="text" id="user_query" name="user_query" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <button id="startRecording">Start Recording</button>
+    <button id="stopRecording" style="display: none;">Stop Recording</button>
+
+    <p id="recordingStatus"></p>
+
+    {% if user_query %}
+        <p>Your Query: {{ user_query }}</p>
+    {% endif %}
+    {% if assistant_response %}
+        <p>Assistant Response: {{ assistant_response }}</p>
+    {% endif %}
+
+    <script>
+        
+    </script>
+</body>
+</html>
